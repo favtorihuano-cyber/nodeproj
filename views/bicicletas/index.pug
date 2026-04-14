@@ -1,0 +1,31 @@
+extends ../layout 
+
+block content
+    a(href='/bicicletas/add') Nueva Bicicleta
+
+    br
+    br
+    br
+    table.table 
+        thead 
+            tr
+                th(scope='col') #
+                th(scope='col') Color
+                th(scope='col') Modelo
+                th(scope='col') Ubicacion 
+                th(scope='col') Update 
+                th(scope='col') Delete 
+        tbody
+            each bici in bicis 
+                tr
+                    td(scope='row')
+                        = bici.id
+                    td= bici.color
+                    td= bici.model
+                    td= bici.ubicacion
+                    td
+                        a(href='/bicicletas/' + bici.id + '/update') Update
+                    td
+                        form.inline(method='POST' action='bicicletas/' + bici.id + '/delete')
+                            input(type='hidden' name='id' value= bici.id)
+                            button.link-button(type='submit' name='submit_del' value='submit_val' class='btn') Eliminar
