@@ -8,8 +8,11 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var bicisRouter = require('./routes/bicicletas');
 var bicisAPIRouter = require('./routes/api/bicicletas');
+var connection = require('./database');
 
 var app = express();
+
+connection();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
